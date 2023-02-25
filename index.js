@@ -117,6 +117,12 @@ async function run() {
       const users= await usersCollections.find(query).toArray()
       res.send(users)
     })
+    app.delete('/users/:id',async(req,res)=>{
+      const id =req.params.id
+      const filter= {_id:new ObjectId(id)}
+      const result= await usersCollections.deleteOne(filter)
+      res.send(result)
+    })
 
     // particular admin user
 
